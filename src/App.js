@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import { MainPage } from './pages/main-pages/main-page';
+import { NotFound } from './pages/not-found/not-found';
+import { TodoPage } from './pages/todo-pages/todo-page';
+import styles from './app.module.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
+export const App = () => (
+	<div className={styles.app}>
+		<Routes>
+			<Route path="/" element={<MainPage />} />
+			<Route path="/task" element={<TodoPage />} />
+			<Route path="/task/:id" element={<TodoPage />} />
+			<Route path="/404" element={<NotFound />} />
+			<Route path="*" element={<NotFound />} />
+		</Routes>
+	</div>
+);
